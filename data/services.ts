@@ -193,35 +193,6 @@ export const data = {
         }
       ]
     },
-    {
-      id: "makeup-services",
-      title: "Makeup Services",
-      description: "Professional makeup services for all occasions with expert techniques and premium products",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop",
-      items: [
-        {
-          id: "party-makeup",
-          title: "Party Makeup",
-          description: "Glamorous party makeup with long-lasting products and professional techniques",
-          price: 2000,
-          image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop"
-        },
-        {
-          id: "wedding-guest-makeup",
-          title: "Wedding Guest Makeup",
-          description: "Elegant makeup for wedding guests with traditional and modern elements",
-          price: 2500,
-          image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop"
-        },
-        {
-          id: "day-makeup",
-          title: "Day Makeup",
-          description: "Natural, fresh day makeup perfect for office, meetings, or casual outings",
-          price: 1200,
-          image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=300&fit=crop"
-        }
-      ]
-    }
   ]
 };
 
