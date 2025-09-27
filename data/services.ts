@@ -2,17 +2,17 @@ export const data = {
   logo: "/logo.png",
   name: "Shivali",
   tagline: "Home Care Service",
-  phone: "+91 7027251329",
-  whatsappNumber: "+91 7027251329",
-  email: "info@shivalihomeservice.com",
+  phone: "+91 9266711329",
+  whatsappNumber: "+91 9266711329",
+  email: "singhluxmi7027@gmail.com",
   whatsappMessage: "Hi! I'd like to book a beauty service with Shivali Home Care Service.",
   address: "Jhajjar, Haryana, India",
   city: "Mumbai",
   description: "Professional beauty services at your doorstep. Experience luxury treatments in the comfort of your home with personalized care.",
   socialMedia: {
-    instagram: "https://instagram.com/shivalihomeservice",
-    facebook: "https://facebook.com/shivalihomeservice",
-    twitter: "https://twitter.com/shivalihomeservice"
+    instagram: "https://www.instagram.com/aasmi_9896?igsh=MWFscDB6dWE0NnV3OQ==",
+    facebook: "https://www.facebook.com/share/19Xotgmb3x/",
+    twitter: ""
   },
   hero: {
     subtitle: "Premium Home Beauty Services",
