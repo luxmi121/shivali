@@ -1,12 +1,12 @@
 export const data = {
   logo: "/logo.png",
   name: "Shivali",
-  tagline: "Home Service",
+  tagline: "Home Care Service",
   phone: "+91 7027251329",
   whatsappNumber: "+91 7027251329",
   email: "info@shivalihomeservice.com",
-  whatsappMessage: "Hi! I'd like to book a beauty service with Shivali Home Service.",
-  address: "Mumbai, Maharashtra, India",
+  whatsappMessage: "Hi! I'd like to book a beauty service with Shivali Home Care Service.",
+  address: "Jhajjar, Haryana, India",
   city: "Mumbai",
   description: "Professional beauty services at your doorstep. Experience luxury treatments in the comfort of your home with personalized care.",
   socialMedia: {
