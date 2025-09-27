@@ -8,7 +8,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Shivali Home Service ",
+  title: "Shivali Home Care Service ",
   description:
     "Professional beauty services delivered to your home by certified expert. Facial treatments, hair care, and nail art - all in the comfort of your home.",
 }
