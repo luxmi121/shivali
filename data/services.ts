@@ -44,14 +44,14 @@ export const data = {
           id: "classic-facial",
           title: "Classic Facial",
           description: "Deep cleansing, exfoliation, and moisturizing facial treatment suitable for all skin types. Includes steam, extraction, and hydrating mask.",
-          price: 1500,
+          price: 600,
           image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&h=300&fit=crop"
         },
         {
           id: "gold-facial",
           title: "Gold Facial",
           description: "Luxurious 24K gold facial treatment for anti-aging, skin tightening, and radiant glow. Perfect for special occasions.",
-          price: 2500,
+          price: 800,
           image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
         },
         {
