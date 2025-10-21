@@ -1,72 +1,96 @@
 "use client"
 
-import Image from "next/image"
+import { useState } from "react"
 import Link from "next/link"
-import { MessageCircle, Phone, Clock, IndianRupee } from "lucide-react"
+import { IndianRupee, MessageCircle, Phone, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { formatPrice, generateWhatsAppLink, generatePhoneLink } from "@/lib/utils"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { generateWhatsAppLink, generatePhoneLink } from "@/lib/utils"
 
 interface ServiceCardProps {
   service: any
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
-  const phoneNumber = service?.phone
-  const whatsappMessage = `Hello! I'm interested in booking the ${service?.title} service for ${formatPrice(service?.price)}. Could you please provide me with more details about availability and booking process?`
-  
-
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const phoneNumber = "+91 9266711329"
+  const whatsappMessage = `Hello! I'm interested in booking the ${service?.serviceTitle} service for ₹${service?.price.toLocaleString("en-IN")}. Could you please provide me with more details about availability and booking process?`
 
   return (
-    <Card className="bg-card border border-border rounded-lg overflow-hidden card-hover group py-0">
-      <CardHeader className="p-0 ">
-        <div className="relative h-32 overflow-hidden">
-          <Image
-            src={service?.image || "/placeholder.svg"}
-            alt={service?.title}
-            fill
-            className="object-cover image-hover"
-          />
-          {/* <div className="absolute top-3 right-3">
-            <Badge variant="secondary" className="bg-background/90 text-foreground">
-              <Clock className="w-3 h-3 mr-1" />
-              {service?.duration}
-            </Badge>
-          </div> */}
+    <>
+      <div 
+        className="group p-4 rounded-lg border border-border bg-card hover:bg-accent/50 hover:border-primary/30 transition-all duration-200 cursor-pointer"
+        onClick={() => setIsDialogOpen(true)}
+      >
+        <div className="space-y-2">
+          {/* Title */}
+          <h3 className="font-semibold text-sm sm:text-base text-foreground line-clamp-1 group-hover:text-primary transition-colors">
+            {service?.serviceTitle}
+          </h3>
+          
+          {/* Description */}
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed line-clamp-2">
+            {service?.description}
+          </p>
+          
+          {/* Price */}
+          <div className="flex items-center space-x-1 text-primary font-bold text-sm sm:text-base">
+            <IndianRupee className="w-4 h-4" />
+            <span>{service?.price.toLocaleString("en-IN")}</span>
+          </div>
         </div>
-      </CardHeader>
+      </div>
 
-      <CardContent className="px-3 space-y-2 -my-2 ">
-          <h3 className="font-semibold text-base text-balance line-clamp-1">{service?.title}</h3>
-          <p className="text-xs text-muted-foreground leading-relaxed text-pretty line-clamp-2">{service?.description}</p>
+      {/* Service Details Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-primary" />
+              </div>
+              <DialogTitle className="text-xl font-bold">{service?.serviceTitle}</DialogTitle>
+            </div>
+            <DialogDescription className="text-base leading-relaxed">
+              {service?.description}
+            </DialogDescription>
+          </DialogHeader>
 
-        <div className="flex items-center space-x-1 text-primary font-bold text-lg">
-          <IndianRupee className="w-4 h-4" />
-          <span>{service?.price.toLocaleString("en-IN")}</span>
-        </div>
-      </CardContent>
+          <div className="space-y-4">
+            {/* Price Display */}
+            <div className="flex items-center justify-center space-x-2 text-primary font-bold text-2xl py-4 bg-primary/5 rounded-lg">
+              <IndianRupee className="w-6 h-6" />
+              <span>{service?.price.toLocaleString("en-IN")}</span>
+            </div>
 
-      <CardFooter className="p-3 pt-0 flex gap-2">
-        <Button asChild size="sm" className="flex-1 bg-primary hover:bg-primary/90 text-xs">
-          <Link href={generateWhatsAppLink(phoneNumber, whatsappMessage)} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="w-3 h-3 mr-1" />
-            Chat
-          </Link>
-        </Button>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button asChild className="flex-1 bg-primary hover:bg-primary/90">
+                <Link href={generateWhatsAppLink(phoneNumber, whatsappMessage)} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Chat Now
+                </Link>
+              </Button>
 
-        <Button
-          asChild
-          variant="outline"
-          size="sm"
-          className="flex-1 border-primary/20 hover:bg-primary/5 bg-transparent text-xs"
-        >
-          <Link href={generatePhoneLink(phoneNumber)} target="_blank" rel="noopener noreferrer">
-            <Phone className="w-3 h-3 mr-1" />
-            Call
-          </Link>
-        </Button>
-      </CardFooter>
-    </Card>
+              <Button
+                asChild
+                variant="outline"
+                className="flex-1 border-primary/20 hover:bg-primary/5"
+              >
+                <Link href={generatePhoneLink(phoneNumber)} target="_blank" rel="noopener noreferrer">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Now
+                </Link>
+              </Button>
+            </div>
+
+            {/* Additional Info */}
+            <div className="text-center text-sm text-muted-foreground">
+              <p>Ready to book? Contact us now for availability and scheduling!</p>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   )
 }

@@ -1,52 +1,41 @@
 "use client"
-import Image from "next/image"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Sparkles } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { ServiceCard } from "@/components/service-card"
 
 interface CategorySectionProps {
   category: any
-  isExpanded: boolean
-  onToggle: () => void
 }
 
-export function CategorySection({ category, isExpanded, onToggle }: CategorySectionProps) {
+export function CategorySection({ category }: CategorySectionProps) {
   return (
-    <Card className="overflow-hidden break-inside-avoid  border-primary/10">
-      <CardHeader className="cursor-pointer  transition-colors p-0" onClick={onToggle}>
-        <div className="flex sm:flex-row flex-col sm:items-center items-start gap-6 px-6">
-          <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 sm:block hidden">
-            <Image src={category.image || "/placeholder.svg"} alt={category.title} fill className="object-cover" />
+    <Card className="overflow-hidden break-inside-avoid border-primary/10 hover:border-primary/20 hover:shadow-lg transition-all duration-300 bg-card">
+      <CardHeader className="p-0">
+        <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-6">
+          <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center flex-shrink-0 shadow-sm">
+            <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
           </div>
 
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl font-bold text-balance">{category.title}</h2>
-            <p className="text-muted-foreground mt-1 text-pretty">{category.description}</p>
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground text-balance">{category.categoryTitle}</h2>
+            <p className="text-muted-foreground mt-1 text-pretty text-xs sm:text-sm lg:text-base">{category.description}</p>
 
-            <div className="flex w-full items-center  justify-between gap-2">
-              <p className="text-sm text-primary mt-2 font-medium">{category.items.length} services available</p>
-              <Button variant="ghost" size="icon" className="flex-shrink-0 sm:hidden flex mt-4">
-                {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-              </Button>
+            <div className="mt-3 sm:mt-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-xs sm:text-sm text-primary font-medium">
+                {category.items.length} services available
+              </div>
             </div>
           </div>
-
-          <Button variant="ghost" size="icon" className="flex-shrink-0 sm:flex hidden">
-            {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-          </Button>
         </div>
       </CardHeader>
 
-      {isExpanded && (
-        <CardContent className={`px-6 pt-0 ${isExpanded ? "lg:max-h-[370px] overflow-y-auto" : ""}`}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3  gap-4">
-            {category.items.map((service: any) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-        </CardContent>
-      )}
+      <CardContent className="px-4 sm:px-6 pt-0 pb-4 sm:pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {category.items.map((service: any, index: number) => (
+            <ServiceCard key={index} service={service} />
+          ))}
+        </div>
+      </CardContent>
     </Card>
   )
 }

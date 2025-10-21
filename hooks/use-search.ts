@@ -26,18 +26,18 @@ export function useSearch(services: Service[]) {
       return services
     }
 
-    const query = searchQuery.toLowerCase().trim()
+    const query = searchQuery?.toLowerCase().trim()
 
     return services?.map(service => {
       // Check if category matches
       const categoryMatches = 
-        service?.title.toLowerCase().includes(query) ||
-        service?.description.toLowerCase().includes(query) 
+        service?.title?.toLowerCase().includes(query) ||
+        service?.description?.toLowerCase().includes(query) 
 
       // Filter items within the category
       const filteredItems = service?.items.filter(item =>
-        item.title.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query) 
+        item.title?.toLowerCase().includes(query) ||
+        item.description?.toLowerCase().includes(query) 
       )
 
       // If category matches or has matching items, return the service

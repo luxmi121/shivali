@@ -75,10 +75,10 @@ export function Footer({ logo, name, tagline, phone, whatsappNumber, email, addr
               <h4 className="font-semibold text-foreground">Our Services</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 {
-                  services?.map((service: any) => (
-                  <li key={service.id}>
+                  services?.map((category: any, index: number) => (
+                  <li key={index}>
                     <Link href="#" className="hover:text-primary transition-colors">
-                      {service.title}
+                      {category.categoryTitle}
                     </Link>
                   </li>))
                 }

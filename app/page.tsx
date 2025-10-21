@@ -27,7 +27,7 @@ export default function HomePage() {
           address={data?.address}
           hero={data?.hero}
         />
-        <ServicesSection services={data?.services} servicesTitle={data?.servicesTitle} servicesDescription={data?.servicesDescription} />
+        <ServicesSection categories={data?.categories} sectionTitle={data?.servicesTitle} sectionDescription={data?.servicesDescription} />
       </main>
       <Footer
         logo={data?.logo}
@@ -39,7 +39,7 @@ export default function HomePage() {
         address={data?.address}
         whatsappMessage={data?.whatsappMessage}
         socialMedia={data?.socialMedia}
-        services={data?.services.slice(0, 10)}
+        services={data?.categories.slice(0, 10)}
       />
     </div>
   )

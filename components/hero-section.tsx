@@ -91,17 +91,17 @@ export function HeroSection({ name, tagline, phone, whatsappNumber, email, whats
                 <span className="text-sm font-medium uppercase tracking-wider">{hero?.subtitle}</span>
               </div>
 
-              <h1 className=" text-4xl font-bold leading-tight text-balance">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-balance">
                 <span className="gradient-text">{name}</span>
                 <br />
                 <span className="text-foreground">{tagline}</span>
               </h1>
 
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg text-pretty">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg text-pretty">
                 {hero?.description}
               </p>
 
-              <p className="text-base text-muted-foreground leading-relaxed max-w-lg text-pretty">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-lg text-pretty">
                 {hero?.detailedDescription}
               </p>
             </div>
@@ -133,7 +133,7 @@ export function HeroSection({ name, tagline, phone, whatsappNumber, email, whats
             </div>
 
             {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 lg:pt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-6 lg:pt-8">
               {hero?.features.map((feature, index) => {
                 const IconComponent = getIconComponent(feature.icon)
                 return (
